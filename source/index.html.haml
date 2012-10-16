@@ -17,10 +17,10 @@ authors:
     %li
       %a{:href=>'https://docs.google.com/presentation/pub?id=1Tq90PlpR_0z_DTzy5u8oRUn8iHOWVlW4fB1XmpcWBqc&start=false&loop=false&delayms=3000'}
         Introduction to the CLI
-%section#index
-  %h1 Index
-  %ul
-    - sitemap.resources.each do |x|
-      %li
-        %a{:href=>x.url}=x.metadata[:page]["title"] || x.url 
-
+-#
+  %section#index
+    %h1 Index
+    %ul
+      - sitemap.resources.each do |x|
+        %li
+          %a{:href=>x.url}=x.metadata[:page]["title"] || x.url 
