@@ -1,0 +1,126 @@
+---
+title: "Command List"
+authors:
+  - "Kevin Raoofi"
+sections:
+- name: Command List
+  href: ! '#commands'
+- name: About
+  href: ! '#about'
+dropdown:
+- attrib:
+    id: commanddrop
+    name: Commands
+    target: ! '#'
+  list:
+  - name: cd
+    href: ! '#cmd-cd'
+  - name: help
+    href: ! '#cmd-help'
+  - name: less
+    href: ! '#cmd-less'
+  - name: ls
+    href: ! '#cmd-ls'
+  - name: man
+    href: ! '#cmd-man'
+#- attrib:
+#    id: docdrop
+#    name: Documents
+#    target: ! '#'
+#  list:
+#  - name: Cron
+#    href: /doc/cron.html
+---
+
+%section#commands
+  %h1 Command List
+  %dl
+    %dt#cmd-cd cd
+    %dd
+      :markdown
+        A shell built-in to change the shell working directory.
+
+        `cd [dir]`
+
+        When the directory is not specified, `cd` will change the
+        working directory to the home directory.  Otherwise, it will
+        change the working directory to the directory.
+      %pre.prettyprint.linenums.lang-sh
+        :preserve
+          user@host:~$ cd /var/www/
+          user@host:/var/www$ pwd
+          /var/www
+          user@host:/var/www$ cd 
+          user@host:~$ pwd
+          /home/user/
+    %dt#cmd-help help
+    %dd
+      :markdown
+        shows builtin help for a shell built-in
+    %dt#cmd-less less
+    %dd
+      :markdown
+        A very basic text editor. Scroll through using up and down arrow
+        keys. Exit using `q`. Type in `h` for a help page. You can also
+        use `j` for scrolling down and `k` for scrolling up. Page Up/Down
+        can be used to scroll through a screen full of content at a time.
+
+      %pre.prettyprint
+        :preserve
+          user@host:~$ less file.txt
+
+    %dt#cmd-ls ls
+    %dd
+      :markdown
+        Shows the directory contents of the working directory.
+
+        `ls [OPTION]... [FILE]...`
+
+        When the directory is not specified, `ls` will show the contents
+        of the working directory.
+    %dt#cmd-man man
+    %dd
+      :markdown
+        Man pages describe [`less`][less]
+
+        [less]:#cmd-less
+
+%section#about
+  %h1 About
+  :markdown
+    This is a list of commands you must learn how to use.
+    A quick overview of very commonly used commands and
+    how they're used.
+
+    In a Unix-like system `man` pages describe the functionality of 
+    commands. The man page has a section titled `SYNOPSIS` in which there
+    is a some code which quickly summarizes the syntax of the command and
+    its arguments. I did not include the full synopsis for most commands
+    for the sake of simplicity. Refer to the man pages to learn more.
+
+    * **Boldface** is used for as-is text
+    * *Italics* are used to indicate replaceable arguments
+    * Brackets `[]` surround optional arguments
+    * Vertical bars `|` separate choices
+    * Ellipses `...` can be repeated
+
+    If the command is a shell built-in, it may not be documented in its
+    own man page. It will be documented in the shell's man page and, more
+    conveniently, by invoking the `help` command from within `bash`.
+    Note, also, that many programs accept optional parameters to show
+    a summary of how to invoke the program. It is a
+    [standard][gnuclistandard] to have this parameter be `--help` but it's
+    only loosely enforced and thus may be something else or not even
+    exist. If `--help` doesn't work, you can always try `-h` or `-help`.
+    Often, typing in the wrong parameters will also usually result in
+    the command showing you its help page.
+
+    By the way, the `-` before an argument usually implies that the
+    parameter expects one letter whereas `--` implies a whole word.
+
+    See [this][man] section for more information on applications and
+    [this][help] section for more information on shell-builtins.
+
+    [man]:#cmd-man
+    [help]:#cmd-help
+    [gnuclistandard]:http://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html

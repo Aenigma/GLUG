@@ -1,0 +1,29 @@
+---
+sections:
+- name: About
+  href: ! '#about'
+- name: Slides
+  href: ! '#slides'
+dropdown:
+- attrib:
+    id: commanddrop
+    name: Commands
+    target: ! '#'
+  list:
+  - name: cd
+    href: ! '#cmd-cd'
+  - name: help
+    href: ! '#cmd-help'
+  - name: less
+    href: ! '#cmd-less'
+  - name: ls
+    href: ! '#cmd-ls'
+  - name: man
+    href: ! '#cmd-man'
+- attrib:
+    id: docdrop
+    name: Documents
+    target: ! '#'
+  list:
+  - name: Cron
+    href: /doc/cron.html

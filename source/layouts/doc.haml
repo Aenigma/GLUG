@@ -1,0 +1,61 @@
+!!! 5
+%html
+  %head
+    %meta{:charset => 'UTF-8'}
+    %meta{:name=>'author',:content=>'Kevin Raoofi'}
+    %title= current_page.data.title
+    %link{:href=>'/css/bootstrap.css', :rel =>'stylesheet'}
+    %link{:href=>'/css/bootstrap-responsive.css',:rel=>'stylesheet'}
+    %link{:href=>'/css/prettify.css',:rel=>'stylesheet'}
+    %link{:href=>'/ico/favicon.ico',:rel=>'shortcut icon'}
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body{:data=>{:spy => 'scroll',:target=>'.navbar'},:onload=>'prettyPrint()'}
+    .navbar.navbar-inverse.navbar-static-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href=>'/'}= data.sitewide.brand
+          .nav-collapse.collapse
+            %ul.nav
+              - if current_page.data.sections
+                - current_page.data.sections.each do |entry|
+                  %li
+                    %a{:href=>entry.href}= entry.name
+              - if current_page.data.dropdown
+                - current_page.data.dropdown.each do |drop|
+                  %li.dropdown
+                    %a.dropdown-toggle{:id=>drop.attrib.id,:role=>'button',:data=>{:toggle=>'dropdown',:target=>drop.attrib.target}} 
+                      = drop.attrib.name
+                      %b.caret
+                    %ul.dropdown-menu{:role=>'menu','aria-labelledby'=>drop.attrib.id}
+                      - drop.list.each do |entry|
+                        %li
+                          %a{:href=>entry.href}=entry.name
+    .container
+      = yield
+    %footer.footer
+      .container
+        %a.pull-right{:rel=>'license', :href=>'http://creativecommons.org/licenses/by-sa/3.0/deed'}
+          %img{:alt=>'Creative Commons License', :style=>'border-width:0', :src=>'http://i.creativecommons.org/l/by-sa/3.0/88x31.png'}
+        %p
+          This work is licensed under a
+          %a{:rel=>'license',:href=>'http://creativecommons.org/licenses/by-sa/3.0/deed'}
+            Creative Commons Attribution-ShareAlike 3.0 Unported License
+        %p
+          - if current_page.data.authors != nil
+            Written by:
+            %ul.footer-links
+              - current_page.data.authors.each do |author|
+                %li
+                  - if data.authors.has_key?(author)
+                    %a{:rel=>"author", :href=>data.authors[author]}=author
+                  - else
+                    =author
+    %script{:src=>'/js/jquery.js'}
+    %script{:src=>'/js/bootstrap.js'}
+    %script{:src=>'/js/prettify.js'}

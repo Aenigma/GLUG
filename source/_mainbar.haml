@@ -1,0 +1,22 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href=>'/'}= data.sitewide.brand
+      .nav-collapse.collapse
+        %ul.nav
+          - data.index.sections.each do |title,href|
+            %li
+              %a{:href=>href}= title
+          - data.index.dropdown.each do |drop|
+            %li.dropdown
+              %a.dropdown-toggle{:id=>drop.attrib.id,:role=>'button',:data=>{:toggle=>'dropdown',:target=>drop.attrib.target}} 
+                = drop.attrib.name
+                %b.caret
+              %ul.dropdown-menu{:role=>'menu','aria-labelledby'=>drop.attrib.id}
+                - drop.list.each do |cmd,href|
+                  %li
+                    %a{:href=>href}=cmd

@@ -1,0 +1,26 @@
+---
+title: Linux Club Home
+authors:
+  - "Kevin Raoofi"
+  - "Seth Thomas"
+---
+
+%section#about
+  %h1 About
+  %p This page contain supplementary documents from Linux club.
+%section#slides
+  %h1 Slides
+  %ul
+    %li
+      %a{:href=>'https://docs.google.com/presentation/pub?id=1jnnSb6YXYRm839-GakVeclJJ6nqOWYYTCTkRmXPWcfk&start=false&loop=false&delayms=3000'}
+        Introduction to Linux
+    %li
+      %a{:href=>'https://docs.google.com/presentation/pub?id=1Tq90PlpR_0z_DTzy5u8oRUn8iHOWVlW4fB1XmpcWBqc&start=false&loop=false&delayms=3000'}
+        Introduction to the CLI
+%section#index
+  %h1 Index
+  %ul
+    - sitemap.resources.each do |x|
+      %li
+        %a{:href=>x.url}=x.metadata[:page]["title"] || x.url 
+

@@ -1,0 +1,109 @@
+---
+title: Cron
+authors:
+  - "Kevin Raoofi"
+sections:
+  - name: "About"
+    href: ! "#about"
+---
+.container
+  %h1.title
+    Cron
+  .row
+    .span8.offset2
+      %pre{:style=>'line-height:100%'}
+        :preserve
+          *    *    *    *    *  command to be executed
+          ┬    ┬    ┬    ┬    ┬
+          │    │    │    │    │
+          │    │    │    │    │
+          │    │    │    │    └───── day of week (0 - 6) (0=Sunday)
+          │    │    │    └────────── month (1 - 12)
+          │    │    └─────────────── day of month (1 - 31)
+          │    └──────────────────── hour (0 - 23)
+          └───────────────────────── min (0 - 59)
+  %section#about
+    %h2 About
+    :markdown
+      `cron` is the de facto task scheduler for UNIX-like operating systems.
+      the default install on Debian, which is called vixie cron. The user
+      interface between flavors of `cron` should all be the same, however,
+      and you should have no problem using any flavor of cron once you know
+      how to use vixie cron.
+  %section#syntax
+    %h2 Syntax
+    :markdown
+      To modify `cron`'s settings, you invoke a program named `crontab` to
+      modify the *cron table*. The above chart shows the syntax of entering
+      jobs into the cron table.
+
+      Each asterisk may be  replaced with a digit specifying at what time,
+      or you want the command to be ran. If you want to specify all, you
+      leave it as an asterisk. So, for example, if you want to run something
+      every January 2nd at 12:50 PM, you’d type in:
+
+      `50 12 2 1 * command`
+
+      The `command` should usually be a shell script or an application. This
+      makes it easier for you to modify later on and is less clutter for
+      when you look through your cron table.
+
+      To add things to `cron` using `crontab`, you would type in the syntax,
+      pressing enter after each entry, then pressing `Ctrl+D` to
+      signify that you're done.
+
+      More practically, you can invoke `crontab -e` which will display the
+      entire cron table to you in your default editor.
+
+      If you've made errors, `crontab` should tell
+      you as long as it is a syntactic mistake for `cron` and not a bug in
+      the specified application. In Debian, however, if the applications
+      crashes or displays warnings, the result will be mailed to you every
+      time it does so.
+  %section#shortcuts
+    %h2 Predefined Schedules
+    :markdown
+      In addition to the syntax outlined above, there are a few 'shortcuts'
+      of sorts built into vixie cron for some practical frequncies. They are
+      as follows:
+    .row
+      .span10.offset1
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th Entry
+              %th Description
+              %th Equivalent To
+          %tbody
+            %tr
+              %td @yearly (or @anually)
+              %td Run once a year, midnight, Jan. 1
+              %td
+                %code 0 0 1 1 *
+            %tr
+              %td @monthly
+              %td Run once a month, midnight, first of month
+              %td
+                %code 0 0 1 * *
+            %tr
+              %td @weekly
+              %td Run once a week, midnight on Sun
+              %td
+                %code 0 0 * * 0
+            %tr
+              %td @daily
+              %td Run once a day, midnight
+              %td
+                %code 0 0 * * *
+            %tr
+              %td @reboot
+              %td Run at startup
+              %td No equivalent
+    :markdown
+      You should, regardless, familiarize yourself with the former syntax
+      albeit it is a bit esoteric at first. As the former syntax is much
+      more flexible.
+  %section#special
+    %h2 Special Characters
+    :markdown
+      katie
