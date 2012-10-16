@@ -1056,3 +1056,12 @@
     overflow: visible !important;
   }
 }
+/**
+ * Manual configurations
+**/
+@media (max-width: 979px)
+{
+ body > .navbar .brand {
+   float:left;
+ }
+}
