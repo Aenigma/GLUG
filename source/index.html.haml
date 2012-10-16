@@ -11,12 +11,10 @@ authors:
 %section#slides
   %h1 Slides
   %ul
-    %li
-      %a{:href=>'https://docs.google.com/presentation/pub?id=1jnnSb6YXYRm839-GakVeclJJ6nqOWYYTCTkRmXPWcfk&start=false&loop=false&delayms=3000'}
-        Introduction to Linux
-    %li
-      %a{:href=>'https://docs.google.com/presentation/pub?id=1Tq90PlpR_0z_DTzy5u8oRUn8iHOWVlW4fB1XmpcWBqc&start=false&loop=false&delayms=3000'}
-        Introduction to the CLI
+    - data.slides.each do |entry|
+      %li
+        %a{:href=>entry.href}
+          =entry.name
 -#
   %section#index
     %h1 Index
