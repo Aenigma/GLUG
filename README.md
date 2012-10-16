@@ -38,7 +38,7 @@ and, thus, its documentation should prove useful. Middleman is able to use
 HAML template files to assist in having consistency. Thus, all the haml files
 you create don't need to have a much boilerplating to include the navigation bar
 and other components provided by the layout. If you'd like to change the layouts
-themselves, have a look in `src/layouts`. They are regular HAML files with a 
+themselves, have a look in `source/layouts`. They are regular HAML files with a 
 `=yield` which gets replaced by the content of another HAML file.
 
 The relation between HAML file and layout is configured in `config.rb`. The
