@@ -9,11 +9,37 @@ work a lot better with Ruby than Windows. To install Ruby on a real system,
 follow the instructions provided [here][rvm]. If you want to try to do it with
 Windows, follow the instructions provided [here][rubyinstaller].
 
-It boils down to installing rvm by using this command:
+## Installing RVM and Ruby
+If you're on a Debian based installation, before you install `rvm`, you need to
+install a system Ruby and then install build-essentials.
+
+So, to install some requirements, run:
+
+    # aptitude update
+    # aptitude upgrade
+    # aptitude install ruby build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+
+Then, it boils down to installing rvm by using this command:
 
     $ curl -L https://get.rvm.io | bash -s stable --ruby
 
-Then, you need to go to the project root and do a:
+Read instructions carefully as this process requires compilation of Ruby and
+related utilities. Also, if you install RVM before executing the command to
+install its dependencies, make sure to reinstall the Ruby by doing:
+
+    $ rvm reinstall default
+
+Now, you have to make sure rvm runs when your shell is started. This step is
+actually outlined in the rvm installation process, but, just append this to your
+.bashrc:
+    [[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
+
+Okay, so Ruby's installed, but now you need to install bundler, a package manager
+for Ruby with this:
+
+    $ gem install bundler
+
+Whew. Now, go to the project root and do a:
 
     $ bundle install
 
