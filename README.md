@@ -44,6 +44,12 @@ themselves, have a look in `source/layouts`. They are regular HAML files with a
 The relation between HAML file and layout is configured in `config.rb`. The
 default layout is called `layout.haml`.
 
+### Styling
+If you want to modify the styling used in the website, most (if not all) of the
+code doing that is taken from [Twitter Bootstrap][bootstrap] so you should
+definitely check it out its documentation. The files in question, of course,
+are in the `css/` and `js/` directories.
+
 ## Metadata
 In addition to all of this, the layouts have Ruby code embedded to help with
 some automation. For one, certain [metadata][yamldata] about the article can be embedded into the page's HAML file at the top. Currently, `title`, `authors`,
@@ -63,6 +69,7 @@ name is looked up from this list and his/her website can be retrieved.
 # Contributing
 See [here][git].
 
+[bootstrap]:http://twitter.github.com/bootstrap/
 [git]:https://help.github.com/
 [haml]:http://haml.info
 [json]:http://www.w3schools.com/json/default.asp
