@@ -32,7 +32,12 @@ install its dependencies, make sure to reinstall the Ruby by doing:
 Now, you have to make sure rvm runs when your shell is started. This step is
 actually outlined in the rvm installation process, but, just append this to your
 .bashrc:
+
     [[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
+
+You can do that easily using this command:
+
+    echo '[[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"' >> ~/.bashrc
 
 Okay, so Ruby's installed, but now you need to install bundler, a package manager
 for Ruby with this:
