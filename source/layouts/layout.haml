@@ -1,9 +1,9 @@
+!!! 5
 /
   I see you're looking in the comments.
   Too bad I didn't manually write the HTML.
   To see the source code, go here:
   https://github.com/Aenigma/GLUG
-!!! 5
 %html
   %head
     %meta{:charset => 'UTF-8'}
@@ -39,7 +39,7 @@
                     %b.caret
                   %ul.dropdown-menu{:role=>'menu','aria-labelledby'=>drop.attrib.id}
                     - drop.list.each do |entry|
-                      %li
+                      %li{:role=>'menuitem'}
                         %a{:href=>entry.href}=entry.name
     .container
       = yield
@@ -47,20 +47,18 @@
       .container
         %a.pull-right{:rel=>'license', :href=>'http://creativecommons.org/licenses/by-sa/3.0/deed'}
           %img{:alt=>'Creative Commons License', :style=>'border-width:0', :src=>'http://i.creativecommons.org/l/by-sa/3.0/88x31.png'}
-        %p
-          This work is licensed under a
-          %a{:rel=>'license',:href=>'http://creativecommons.org/licenses/by-sa/3.0/deed'}
-            Creative Commons Attribution-ShareAlike 3.0 Unported License
-        %p
-          - if current_page.data.authors != nil
-            Written by:
-            %ul.footer-links
-              - current_page.data.authors.each do |author|
-                %li
-                  - if data.authors.has_key?(author)
-                    %a{:rel=>"author", :href=>data.authors[author]}=author
-                  - else
-                    =author
+        This work is licensed under a
+        %a{:rel=>'license',:href=>'http://creativecommons.org/licenses/by-sa/3.0/deed'}
+          Creative Commons Attribution-ShareAlike 3.0 Unported License
+        - if current_page.data.authors != nil
+          %p Written by:
+          %ul.footer-links
+            - current_page.data.authors.each do |author|
+              %li
+                - if data.authors.has_key?(author)
+                  %a{:rel=>"author", :href=>data.authors[author]}=author
+                - else
+                  =author
     %script{:src=>'/js/jquery.js'}
     %script{:src=>'/js/bootstrap.js'}
     %script{:src=>'/js/prettify.js'}
